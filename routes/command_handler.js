@@ -12,46 +12,50 @@ router.use(bodyParser.urlencoded({
 }));
 
 var sessionID = uuidv1();
-var apiai = apiai("112abae1919f4232b22ce834d6e99713");
+var apiaiMainIntent = apiai("112abae1919f4232b22ce834d6e99713");
 var applicationList = [];
 
-function loadApplications() {
+/**
+ * Loads packages from the packages folder
+ */
+function loadPackages() {
 
   applicationList = [];
   var normalizedPath = path.join('./', "packages");
 
-  fs.readdirSync(normalizedPath).forEach(function(folder) {
+  fs.readdirSync(normalizedPath).forEach(function (folder) {
     var aio_info = fs.readFileSync("./packages/" + folder + "/aio_info.json");
     var jsonContent = JSON.parse(aio_info);
-    applicationList.push(jsonContent);
+    var names = jsonContent.names;
+    names.forEach(function (name) {
+      applicationList.push({
+        [name]: jsonContent.queryHandler
+      });
+    })
     global[jsonContent.queryHandler] = require("../packages/" + folder);
   })
 }
 
-router.post('/', function(req, res, next) {
-  var request = apiai.textRequest(req.body.question, {
+router.post('/', function (req, res, next) {
+  var request = apiaiMainIntent.textRequest(req.body.question, {
     sessionId: sessionID
   });
 
-  request.on('response', function(response) {
+  request.on('response', function (response) {
     if (response.result.source == 'domains') {
-      res.send({'ttsText': response.result.fulfillment.speech})
-    }
-    else {
+      res.send({
+        'ttsText': response.result.fulfillment.speech
+      })
+    } else {
       var applicationFound = false;
-      for (var application in applicationList) {
-        if (applicationList.hasOwnProperty(application)) {
-          for (var applicationName in applicationList[application].names) {
-            if (applicationList[application].names.hasOwnProperty(applicationName)) {
-              if (applicationList[application].names[applicationName] == response.result.parameters.application) {
-                applicationFound = true;
-                console.log(global[applicationList[application].queryHandler](response.result.parameters.query));
-              }
-            }
-          }
+      var applicationName = response.result.parameters.application;
+      applicationList.forEach(function (applicationData) {
+        if (applicationName in applicationData) {
+          applicationFound = true;
+          console.log(global[applicationData[applicationName]](response.result.parameters.query));
         }
-      }
-      if(!applicationFound) {
+      })
+      if (!applicationFound) {
         res.send({
           'ttsText': 'Could not find an application with name ' + response.result.parameters.application
         })
@@ -60,7 +64,7 @@ router.post('/', function(req, res, next) {
     }
   });
 
-  request.on('error', function(error) {
+  request.on('error', function (error) {
     console.log(error);
   });
 
@@ -68,8 +72,10 @@ router.post('/', function(req, res, next) {
 
 })
 
-router.post('/reload_applications', function(req, res, next){
+router.post('/reload_packages', function (req, res, next) {
   loadApplications();
 })
+
+loadPackages();
 
 module.exports = router;
