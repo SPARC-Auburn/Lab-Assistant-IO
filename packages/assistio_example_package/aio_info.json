@@ -1,0 +1,4 @@
+{
+  "names":["test","weather"],
+  "queryHandler": "testFunction"
+}

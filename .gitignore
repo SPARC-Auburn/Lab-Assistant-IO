@@ -1,2 +1,3 @@
 node_modules/
-packages/
+packages/*
+!packages/assistio_example_package
