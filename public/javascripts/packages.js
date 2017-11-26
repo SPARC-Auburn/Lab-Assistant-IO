@@ -4,7 +4,7 @@ $("#installPackage").click(function(){
     }
     $.post("/packages/install", dataToSend, function(data){
         if(data == "success") {
-            alert("Installed Succesfully!");
+            $.post("/command_handler/reload_packages");
         }
         else {
             alert("Failed to install package")

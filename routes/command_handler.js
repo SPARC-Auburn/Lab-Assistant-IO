@@ -73,7 +73,7 @@ router.post('/', function (req, res, next) {
 })
 
 router.post('/reload_packages', function (req, res, next) {
-  loadApplications();
+  loadPackages();
 })
 
 loadPackages();

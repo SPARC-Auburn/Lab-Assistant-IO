@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var cmd = require('node-cmd');
 const Git = require('nodegit');
 
 // List all packages with ways to modify/install new ones
@@ -13,7 +14,15 @@ router.post('/install', function(req, res, next){
     var repoName = repo[repo.length - 1].split(".")[0];
     Git.Clone(req.body.gitRepo, "packages/"+repoName)
     .then(function(repo){
-        res.send("success");
+        cmd.get('cd packages/' + repoName + " && npm install",function(err, data, stderr){
+            if(err) {
+                res.send(err);
+            }
+            else {
+                res.send("success");
+            }
+        });
+    
     });
 });
 
