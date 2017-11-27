@@ -46,7 +46,7 @@ router.post('/install', function (req, res, next) {
                         if (err) {
                             res.send("Error installing package, could not find the required aio_info.json file. Package was removed.");
                             // cmd.get('rm -rf packages/' + repoName);
-                            rimraf('packages/' + repoName, function () {});
+                            rimraf('packages/' + repoName, ["rmdir"] , function () {});
                         } else {
                             res.send("success");
                         }
