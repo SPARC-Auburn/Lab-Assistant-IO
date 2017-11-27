@@ -58,7 +58,7 @@ router.post('/install', function (req, res, next) {
 });
 
 router.post('/uninstall', function (req, res, next) {
-    rimraf('packages/' + req.body.packageName, function () {
+    rimraf('packages/' + req.body.packageName, ["rmdir"], function () {
         res.send("done");
     });
 })
