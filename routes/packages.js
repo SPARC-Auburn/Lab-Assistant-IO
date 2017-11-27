@@ -15,6 +15,23 @@ router.get('/', function (req, res, next) {
     res.render('packages')
 });
 
+router.get('/list_packages', function(req, res) {
+    dirs = fs.readdirSync('packages/');
+    dirList =  [];
+    dirs.forEach(function(dir) {
+      if (fs.statSync('packages/' + dir).isDirectory()) {
+          var packageInfo = {};
+          var aio_info = fs.readFileSync("./packages/" + dir + "/aio_info.json");
+          var jsonContent = JSON.parse(aio_info);
+          var names = jsonContent.names;
+          packageInfo.packageName = dir;
+          packageInfo.names = names;
+          dirList.push(packageInfo);
+      }
+    })
+  res.send(dirList);
+});
+
 router.post('/install', function (req, res, next) {
     var repo = req.body.gitRepo;
     repo = repo.split("/");
