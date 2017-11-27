@@ -8,7 +8,7 @@ var router = express.Router();
 var cmd = require('node-cmd');
 const Git = require('nodegit');
 const fs = require('fs');
-
+const rimraf = require('rimraf');
 
 // List all packages with ways to modify/install new ones
 router.get('/', function (req, res, next) {
@@ -45,7 +45,8 @@ router.post('/install', function (req, res, next) {
                     fs.stat('packages/' + repoName + "/aio_info.json", function (err, stat) {
                         if (err) {
                             res.send("Error installing package, could not find the required aio_info.json file. Package was removed.");
-                            cmd.get('rm -rf packages/' + repoName);
+                            // cmd.get('rm -rf packages/' + repoName);
+                            rimraf('packages/' + repoName, function(){});
                         } else {
                             res.send("success");
                         }
