@@ -1,3 +1,11 @@
+# Node
 node_modules/
 packages/*
 !packages/assistio_example_package
+
+# Jet Brains
+api-ai-node-js.iml
+.idea/
+
+# Visual Studio
+.vscode/
