@@ -1,6 +1,7 @@
 # Lab Assistant IO
 
 ## Project Purpose
+
 <img src="documentation/sparc_logo.png" height = "96" width = "267" alt="Project Diagram"></img>
 
 The purpose of this project is to create a virtual assistant to assist SPARC members using Node.JS.  SPARC stands for [Student Projects and Research Committee]("http://sparc-auburn.github.io/") and is a student led organization in the Department of Electrical Engineering at Auburn University.  The virtual assistant will be fully featured including abilities to help in the lab to automating a home. It will include a system that allows for easy to use management of lab equipment and various administrative features.  The virtual assistant could also be integrated on a mobile robotic platform to allow more capabilities that a static computing platform could.  Our current iteration of the virtual assistant is named Karen.
