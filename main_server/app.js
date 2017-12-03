@@ -5,13 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-
 var index = require('./routes/index');
 var settings = require('./routes/settings');
 var command_handler = require('./routes/command_handler');
 var packages = require('./routes/packages');
 
 var app = express();
+var opn = require('opn');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -48,5 +48,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 console.log('Assistant started on port 8433 (https://localhost:8443/).');
+opn('https://localhost:8443/', {app: 'chrome'});
 
 module.exports = app;
