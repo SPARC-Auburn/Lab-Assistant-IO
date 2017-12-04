@@ -1,12 +1,16 @@
 extends layout
 
 block content
-    input(type:'text')#packageRepoInput
-    button#installPackage Install
-    br
-    br
-    table#packagesTable
-    br
-    br
-    a(href="/") Home
-    <script src="javascripts/packages.js"></script>
+    main.mdl-layout__content
+      .page-content
+        .mdl-grid
+          .mdl-cell.mdl-cell--12-col(style="text-align: center")
+            .mdl-card
+              .mdl-card__title Packages
+              br
+              input(type:'text')#packageRepoInput
+              button#installPackage Install
+              br
+              table#packagesTable
+              br
+              script(src='javascripts/packages.js')

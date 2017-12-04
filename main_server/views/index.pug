@@ -1,12 +1,15 @@
 extends layout
 
 block content
-  .mdl-grid
-    .mdl-cell.mdl-cell--12-col(style="text-align: center")
-      h1 Lab Assistant IO
-      br
-      div(id="botui-app" class="botui-app-container") 
-        <bot-ui></bot-ui>
-      #configure-box
-        a(href="/packages") Packages
+  main.mdl-layout__content
+    .page-content
+      .mdl-grid
+        .mdl-cell.mdl-cell--12-col(style="text-align: center")
+          div(id="botui-app" class="botui-app-container") 
+            bot-ui
+
+
+        
+            
+  
 

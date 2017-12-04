@@ -23,7 +23,7 @@ $(document).ready(function() {
   }
 
   SpeechKITT.annyang();
-  SpeechKITT.setInstructionsText('Listening Enabled');
+  SpeechKITT.setInstructionsText('Listening...');
   SpeechKITT.setStylesheet('../stylesheets/speechkitt.css');
   annyang.addCommands(commands);
   SpeechKITT.vroom();

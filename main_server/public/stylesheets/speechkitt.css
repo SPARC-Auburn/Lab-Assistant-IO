@@ -7,7 +7,6 @@
 }
 
 #skitt-ui {
-    background-color: #4CAF50;
     display: inline-block;
     z-index: 200;
     border-radius: 25px;
@@ -16,7 +15,7 @@
     left: 20px;
     outline: none;
     border: none;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px;
+    /* box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px; */
     cursor: default;
     font-family: Lato, Helvetica, Arial, sans-serif;
     font-size: 16px;
@@ -39,34 +38,6 @@
 
 label#skitt-toggle-button__label {
     display: none
-}
-
-.skitt-ui--not-listening #skitt-toggle-button {
-    background-color: #F44336
-}
-
-.skitt-ui--listening #skitt-toggle-button {
-    -webkit-animation: listen_pulse 2s ease-out infinite
-}
-
-@-webkit-keyframes "listen_pulse" {
-    0% {
-        background-color: #8BC34A
-    }
-    50% {
-        background-color: #4CAF50
-    }
-    100% {
-        background-color: #388E3C
-    }
-}
-
-.skitt-ui--not-listening #skitt-toggle-button:hover {
-    background-color: #4CAF50
-}
-
-.skitt-ui--listening #skitt-toggle-button:hover {
-    background-color: #F44336
 }
 
 #skitt-listening-box {

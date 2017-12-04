@@ -1,0 +1,50 @@
+:root {
+    --main-light: #546e7a;
+    --main: #455a64;
+    --main-dark: #37474f;
+    --accent1-light: #26a69a;
+    --accent1: #009688;
+    --accent1-dark: #00897b;
+    --accent2-light: #1e88e5;
+    --accent2: #1976d2;
+    --accent2-dark: #1565c0;
+    --background-color: #37474f;
+    --light-text-color: #ffffff;
+    --dark-text-color: #000000;
+}
+
+body{
+    background-color: var(--background-color);
+    color: var(--light-text-color);
+}
+.mdl-layout__header {
+    background-color: var(--main-light) !important;
+}
+.mdl-card {
+    background-color: var(--main-light) !important;
+    color: var(--light-text-color) !important;
+}
+
+/* Bot UI */
+#botui-app{background:none;}
+.botui-message-content {background-color: var(--accent1);color: var(--light-text-color);}
+.botui-message-content.human {background-color: var(--accent2);color: var(--light-text-color);}
+.botui-message-content.loading {background-color: rgba(206, 206, 206, .5);}
+.botui-message-content-link {color: #919292;}
+.botui-actions-text-input {color: #595a5a;border-bottom: 1px solid #919292;}
+.botui-actions-text-submit {background: #777979;color: #fff;border: 1px solid #919292;}
+.botui-actions-buttons-button {background: #777979;color: #fff;box-shadow: 2px 3px 4px 0 rgba(0, 0, 0, .25);}
+
+/* Speech Kitt UI */
+#skitt-ui {background-color: var(--accent1);}
+.skitt-ui--not-listening #skitt-toggle-button {background-color: var(--main-light);}
+.skitt-ui--listening #skitt-toggle-button:hover {background-color: var(--main-light);}
+.skitt-ui--not-listening #skitt-toggle-button:hover {background-color: var(--accent1);}
+@-webkit-keyframes "listen_pulse" {
+    0% {background-color: var(--accent1-light)}
+    50% {background-color: var(--accent1)}
+    100% {background-color: var(--accent1-dark)}
+}
+.skitt-ui--listening #skitt-toggle-button {
+    -webkit-animation: listen_pulse 2s ease-out infinite
+}
