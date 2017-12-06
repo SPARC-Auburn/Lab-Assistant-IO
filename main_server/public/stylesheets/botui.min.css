@@ -10,7 +10,7 @@
 
 .botui-container {
     font-size: 16px;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .botui-messages-container {
@@ -49,7 +49,7 @@
     outline: 0;
     border-radius: 0;
     padding: 5px 7px;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     background-color: transparent;
 }
 
@@ -69,7 +69,7 @@
     font-weight: 500;
     padding: 7px 15px;
     border-radius: 4px;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .slide-fade-enter-active {

@@ -3,14 +3,14 @@ extends layout
 block content
     main.mdl-layout__content
       .page-content
-        .mdl-grid
-          .mdl-cell.mdl-cell--12-col(style="text-align: center")
-            .mdl-card
-              .mdl-card__title Packages
-              br
-              input(type:'text')#packageRepoInput
-              button#installPackage Install
-              br
-              table#packagesTable
-              br
-              script(src='javascripts/packages.js')
+        .mdl-card.center-card
+          .mdl-card__title Packages
+          .mdl-card__supporting-text
+            p To install packages type the package name and press "Install."
+            .mdl-textfield.mdl-js-textfield
+              input#packageRepoInput.mdl-textfield__input(type='text')
+              label.mdl-textfield__label(for='packageRepoInput') Package Name
+            br
+            button#installPackage.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--accent Install
+            script(src='javascripts/packages.js')
+            table#packagesTable.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp(style="margin-top:20px;")

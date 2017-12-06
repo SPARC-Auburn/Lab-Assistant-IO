@@ -9,21 +9,42 @@
     --accent2: #1976d2;
     --accent2-dark: #1565c0;
     --background-color: #37474f;
-    --light-text-color: #ffffff;
+    --light-text-color: #D8DADA;
+    --light-inactive-text-color: rgba(255,255,255,.4);
     --dark-text-color: #000000;
 }
 
-body{
-    background-color: var(--background-color);
-    color: var(--light-text-color);
-}
-.mdl-layout__header {
-    background-color: var(--main-light) !important;
-}
+
+h1{color: var(--light-text-color) !important;}
+h2{color: var(--light-text-color) !important;}
+h3{color: var(--light-text-color) !important;}
+h4{color: var(--light-text-color) !important;}
+h5{color: var(--light-text-color) !important;}
+h6{color: var(--light-text-color) !important;}
+p{color: var(--light-text-color) !important;}
+
+body{background-color: var(--background-color); color: var(--light-text-color) !important;}
+.mdl-layout__header {background-color: var(--main-light) !important; color: var(--light-text-color) !important;}
 .mdl-card {
-    background-color: var(--main-light) !important;
+    background-color: var(--main) !important;
     color: var(--light-text-color) !important;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px;    
 }
+.mdl-card__supporting-text {color: var(--light-text-color) !important;}
+.mdl-textfield {color: var(--light-text-color) !important;}
+.mdl-card__title {color: var(--light-text-color) !important;}
+.mdl-textfield__label {color: var(--light-inactive-text-color) !important;}
+.mdl-textfield__input {color: var(--light-text-color) !important;}
+.mdl-button--accent {background-color: var(--accent1) !important;color: var(--light-text-color) !important;}
+.mdl-layout__drawer{
+    background-color: var(--main) !important; 
+    color: var(--light-text-color) !important;
+    border-right: 1px solid var(--main) !important; 
+}
+.mdl-navigation__link{color: var(--light-text-color) !important;}
+.mdl-navigation__link:hover{background-color: var(--main-light) !important;}
+.mdl-data-table{background-color: var(--main-light) !important; color: var(--light-text-color) !important;}
+.mdl-data-table th{color: var(--light-text-color) !important;}
 
 /* Bot UI */
 #botui-app{background:none;}
