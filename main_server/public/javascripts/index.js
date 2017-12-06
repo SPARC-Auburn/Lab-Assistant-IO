@@ -30,11 +30,13 @@ $(document).ready(function() {
   botui = new BotUI('botui-app');
   isListening = false;
   say(assistant.intro);
+  var instructionString = "To communicate with me say, hey " + assistant.name + " and ask me what you would like to know.";
+  say(instructionString,1000);
 })
 
-function say(response) {
+function say(response, delay) {
   botui.message.bot({
-    delay: 0,
+    delay: delay,
     content: response
   });
   if (SpeechKITT.isListening()){
