@@ -3,3 +3,8 @@
   margin: 0 auto;
   margin-top: 50px;
 }
+body{
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  user-select: none;
+}

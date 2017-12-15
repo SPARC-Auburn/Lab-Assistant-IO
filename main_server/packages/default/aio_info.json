@@ -1,0 +1,7 @@
+{
+  "name":"default",
+  "description": "A collection of administrative commands and fallback responses if previous suites did not catch.",
+  "enabled":true,
+  "priority": 0, 
+  "queryHandler": "processQuery"
+}

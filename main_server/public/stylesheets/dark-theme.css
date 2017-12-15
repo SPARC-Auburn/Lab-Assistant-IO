@@ -43,8 +43,16 @@ body{background-color: var(--background-color); color: var(--light-text-color) !
 }
 .mdl-navigation__link{color: var(--light-text-color) !important;}
 .mdl-navigation__link:hover{background-color: var(--main-light) !important;}
+
+/* Tables */
 .mdl-data-table{background-color: var(--main-light) !important; color: var(--light-text-color) !important;}
 .mdl-data-table th{color: var(--light-text-color) !important;}
+.mdl-data-table tbody tr.is-selected {background-color: var(--main) !important;}
+.mdl-data-table tbody tr:hover {background-color: var(--main) !important;}
+
+/* Toggle Switches */
+.mdl-switch.is-checked .mdl-switch__track {background: var(--accent2-light) !important;}
+.mdl-switch.is-checked .mdl-switch__thumb {background: var(--accent2) !important;}
 
 /* Bot UI */
 #botui-app{background:none;}

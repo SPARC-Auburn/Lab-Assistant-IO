@@ -6,6 +6,8 @@ block content
         .mdl-card.center-card
           .mdl-card__title Packages
           .mdl-card__supporting-text
+            table#packageTable.mdl-data-table.mdl-js-data-table.mdl-data-table.mdl-shadow--2dp
+            br
             p To install packages type the package name and press "Install."
             .mdl-textfield.mdl-js-textfield
               input#packageRepoInput.mdl-textfield__input(type='text')
@@ -13,4 +15,3 @@ block content
             br
             button#installPackage.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--accent Install
             script(src='javascripts/packages.js')
-            table#packagesTable.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp(style="margin-top:20px;")
