@@ -1,55 +1,43 @@
 // @ts-check
+// Set up Express.JS and pull in other modules
 const express = require('express');
 const bodyParser = require('body-parser');
-const apiai = require('apiai');
 const router = express.Router();
 const uuidv1 = require('uuid/v1');
 const fs = require('fs');
 const path = require('path');
+const apiai = require('apiai');
 
 var packageList = [];
 
 router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({
-  extended: false
-}));
+router.use(bodyParser.urlencoded({extended: false}));
 
-/**
- * Loads packages from the packages folder
- */
 function loadPackages() {
+  // Load the packages from the packages folder and add them to packageList
   var normalizedPath = path.join('./', "packages");
-
+  process.stdout.write('Packages installed = [');
   fs.readdirSync(normalizedPath).forEach(function (folder) {
     var aio_info = fs.readFileSync("./packages/" + folder + "/aio_info.json");
     var jsonContent = JSON.parse(aio_info);
-    var package_name = jsonContent.name;
+    process.stdout.write(' ' + jsonContent.name + ' ');
     var package = require("../packages/" + folder);
     packageList.push(package);
   })
+  process.stdout.write(']\n\n');
 }
 
 router.post('/', function (req, res, next) {
   var response = '';
-  console.log("Handling Command...");
-  // TODO: Figure out way to loop through multiple packages and send first defined response
-  //for (const package in packageList) {
+  for (const package of packageList) {
     console.log("<",req.body.question);
-    //response = 'Default response'
-    //response = defaultPackage.processQuery(req.body.question);
-    const defaultPackage = require('../packages/default');
-    defaultPackage(req.body.question, function(data_received){
+    package(req.body.question, function(data_received){
       response = data_received;
-      res.send({
-        'ttsText': response
-      }) 
-    })
-    // if (response != undefined){
-    //   res.send({
-    //     'ttsText': response
-    //   })
-    //   return;
-    // }  
+      if (response != undefined){
+        res.send({'ttsText': response});
+      };
+    });
+  }  
 });
 
 router.post('/reload_packages', function (req, res, next) {

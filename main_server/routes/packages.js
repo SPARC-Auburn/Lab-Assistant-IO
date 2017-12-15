@@ -6,7 +6,7 @@
 var express = require('express');
 var router = express.Router();
 var cmd = require('node-cmd');
-const Git = require('nodegit');
+//const Git = require('nodegit');
 const fs = require('fs');
 const rimraf = require('rimraf');
 
