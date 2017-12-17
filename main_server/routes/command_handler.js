@@ -27,18 +27,46 @@ function loadPackages() {
   process.stdout.write(']\n\n');
 }
 
+// router.post('/', function (req, res, next) {
+//   console.log("<",req.body.question);
+//   var response = undefined
+//   var i = 0;
+//   while(i < packageList.length && response == undefined) {
+//     packageList[i](req.body.question, function(data_received){
+//       response = data_received;
+//       if (response != undefined){
+//         i = packageList.length;
+//         res.send({'ttsText': response});
+//       }
+//       else{
+//         i++;
+//       }  
+//     })    
+//   }
+// });
+
+
 router.post('/', function (req, res, next) {
-  var response = '';
-  for (const package of packageList) {
-    console.log("<",req.body.question);
-    package(req.body.question, function(data_received){
+  console.log("<",req.body.question);
+  var response = undefined
+  var i = 0;
+  for (i = 0; i < packageList.length; i++) {
+    packageList[i](req.body.question, function(data_received){
       response = data_received;
       if (response != undefined){
+        i = packageList.length;
         res.send({'ttsText': response});
-      };
-    });
-  }  
+      }
+      else{
+        i++;
+      }  
+    })
+  }
 });
+
+
+
+
 
 router.post('/reload_packages', function (req, res, next) {
   loadPackages();
