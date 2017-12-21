@@ -3,7 +3,7 @@
 var fs = require('fs');
 var apiai = require('apiai');
 var path = require("path");
-var jsonContent = JSON.parse(fs.readFileSync(path.resolve(__dirname)+"\\aio_info.json").toString());
+var jsonContent = JSON.parse(fs.readFileSync(path.resolve(__dirname)+"/aio_info.json").toString());
 var app = apiai(jsonContent.dialogflowid);
 
 module.exports = function(query, callback){
