@@ -2,6 +2,6 @@
   "name":"default",
   "description": "A collection of administrative commands and fallback responses if previous suites did not catch.",
   "enabled":true,
-  "priority": 0, 
-  "queryHandler": "processQuery"
+  "default": true,
+  "dialogflowid": "95bf7491a61d49d5862f1465cb4bd5ab"
 }

@@ -16,16 +16,42 @@ router.use(bodyParser.urlencoded({extended: false}));
 function loadPackages() {
   // Load the packages from the packages folder and add them to packageList
   var normalizedPath = path.join('./', "packages");
-  process.stdout.write('Packages installed = [');
   fs.readdirSync(normalizedPath).forEach(function (folder) {
-    var aio_info = fs.readFileSync("./packages/" + folder + "/aio_info.json");
-    var jsonContent = JSON.parse(aio_info);
-    process.stdout.write(' ' + jsonContent.name + ' ');
-    var package = require("../packages/" + folder);
-    packageList.push(package);
+    var jsonContent = JSON.parse(fs.readFileSync("./packages/" + folder + "/aio_info.json").toString());
+    // Add package only if it is enabled
+    if (jsonContent.enabled == true){
+      var package = require("../packages/" + folder);
+      // Add package to end(last) if considered to be a default package
+      if (jsonContent.default == true){
+        packageList.push(package); 
+      }
+      else{
+        packageList.unshift(package);
+      }      
+    }    
   })
-  process.stdout.write(']\n\n');
 }
+
+router.post('/', function (req, res, next) {
+  console.log("<",req.body.question);
+  var response = undefined
+  var i = 0;
+  for (i = 0; i < packageList.length; i++) {
+    var keepgoing = packageList[i](req.body.question, function(data_received){
+      response = data_received;
+      if (response != undefined && response != ""){
+        res.send({'ttsText': response});
+        return false;
+      }
+      else{
+        return true;
+      }  
+    })
+    if(!keepgoing) break;
+  }
+});
+
+
 
 // router.post('/', function (req, res, next) {
 //   console.log("<",req.body.question);
@@ -46,23 +72,23 @@ function loadPackages() {
 // });
 
 
-router.post('/', function (req, res, next) {
-  console.log("<",req.body.question);
-  var response = undefined
-  var i = 0;
-  for (i = 0; i < packageList.length; i++) {
-    packageList[i](req.body.question, function(data_received){
-      response = data_received;
-      if (response != undefined){
-        i = packageList.length;
-        res.send({'ttsText': response});
-      }
-      else{
-        i++;
-      }  
-    })
-  }
-});
+// router.post('/', function (req, res, next) {
+//   console.log("<",req.body.question);
+//   var response = undefined
+//   var i = 0;
+//   for (i = 0; i < packageList.length; i++) {
+//     packageList[i](req.body.question, function(data_received){
+//       response = data_received;
+//       if (response != undefined){
+//         i = packageList.length;
+//         res.send({'ttsText': response});
+//       }
+//       else{
+//         i++;
+//       }  
+//     })
+//   }
+// });
 
 
 

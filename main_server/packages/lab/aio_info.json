@@ -1,6 +1,7 @@
 {
   "name":"lab",
   "description": "A collection of administrative commands and fallback responses if previous suites did not catch.",
-  "enabled":true,
-  "priority": 0
+  "enabled": true,
+  "default": false,
+  "dialogflowid": "ea8267fe88af49d8ba389465105b5fbe"
 }

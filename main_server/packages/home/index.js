@@ -1,14 +1,17 @@
 // @ts-check
 // Set up DialogFlow
+var fs = require('fs');
 var apiai = require('apiai');
-var app = apiai("d8cd9faa2fe14731b1187d05b7d6f409");
+var path = require("path");
+var jsonContent = JSON.parse(fs.readFileSync(path.resolve(__dirname)+"\\aio_info.json").toString());
+var app = apiai(jsonContent.dialogflowid);
 
 module.exports = function(query, callback){
-  // Send the query from the user to DialogFlow
-  // Send the response back to the command handler.
+  // Sends the query from the user to DialogFlow
+  // Sends the response back to the command handler.
   var request = app.textRequest(query, {sessionId: '1'});
   request.on('response', function(response) {
-    console.log('> '+ response.result.fulfillment.speech);
+    console.log(jsonContent.name + '> '+ response.result.fulfillment.speech);
     return(callback(processResponse(response)));
   });
   request.on('error', function(error) {
@@ -21,7 +24,7 @@ module.exports = function(query, callback){
 function processResponse(response){
   // Parses through JSON response from Dialogue Flow.
   // Returns a string response or undefined if there is none.
-  if (response.result.fulfillment.speech != undefined){
+  if (response.result.fulfillment.speech != undefined && response.result.fulfillment.speech != ""){
     return response.result.fulfillment.speech;
   }
   // Check intents and entities here for more advanced responses.
