@@ -6,12 +6,11 @@ var path = require("path");
 var jsonContent = JSON.parse(fs.readFileSync(path.resolve(__dirname)+"/aio_info.json").toString());
 var app = apiai(jsonContent.dialogflowid);
 
-module.exports = function(query, callback){
+module.exports.getResponse = function (query, callback){
   // Sends the query from the user to DialogFlow
   // Sends the response back to the command handler.
   var request = app.textRequest(query, {sessionId: '1'});
   request.on('response', function(response) {
-    console.log(jsonContent.name + '> '+ response.result.fulfillment.speech);
     return(callback(processResponse(response)));
   });
   request.on('error', function(error) {
@@ -20,6 +19,10 @@ module.exports = function(query, callback){
   });
   request.end();
 };
+
+module.exports.getName = function (){
+  return jsonContent.name;
+}
 
 function processResponse(response){
   // Parses through JSON response from Dialogue Flow.
