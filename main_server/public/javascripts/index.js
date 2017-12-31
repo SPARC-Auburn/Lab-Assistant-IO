@@ -15,7 +15,7 @@ var assistant = {
 
 $(document).ready(function() {
   if (annyang) {
-    var commands = {'(hey) (yo) (okay) (ok) karen *query' : useApplication};
+    var commands = {'(hey) (yo) (okay) (ok) karen *query' : processSpeech};
   }
 
   if (debugAnnyang) {
@@ -38,27 +38,20 @@ function say(response, delay) {
   botui.message.bot({
     delay: delay,
     content: response
-  });
-  if (SpeechKITT.isListening()){
-    tts(response);
-  }
-  else {
-
-  }
-}
-
-function ask_user(){ 
-  var command = ""
-  if (SpeechKITT.isListening()){
-     
-  }
-  else {
-    command = botui.action.text({ // show 'text' action
+  }).then(function () {
+    if (SpeechKITT.isListening()){
+      tts(response);
+    }
+  }).then(function () {
+    return botui.action.text({ // show 'text' action
       action: {
-        placeholder: ''
+        placeholder: 'Type Response...'
       }
-    }); 
-  }
+    });
+  }).then(function (query) {
+    getResponse(query.value);
+  });
+
 }
 
 function tts(text) {
@@ -67,16 +60,20 @@ function tts(text) {
   });
 }
 
-function useApplication(question) {
+function processSpeech(question){
+  botui.message.add({
+    human: true,
+    content: question
+  });
+  getResponse(question);
+}
+
+function getResponse(question) {
   var userCoords = getGeoLocationCoords();
   var dataToSend = {
     'question': question,
     'userCoords': userCoords
   };
-  botui.message.add({
-    human: true,
-    content: question
-  });
   $.post(applicationsRoute, dataToSend, function(dataRecieved){handleApplicationResponse(dataRecieved)});
 }
 

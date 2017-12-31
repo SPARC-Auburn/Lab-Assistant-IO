@@ -14,7 +14,6 @@
     --dark-text-color: #000000;
 }
 
-
 h1{color: var(--light-text-color) !important;}
 h2{color: var(--light-text-color) !important;}
 h3{color: var(--light-text-color) !important;}
@@ -56,13 +55,19 @@ body{background-color: var(--background-color); color: var(--light-text-color) !
 
 /* Bot UI */
 #botui-app{background:none;}
+.botui-message{margin-bottom:20px !important;min-height:30px !important;}
 .botui-message-content {background-color: var(--accent1);color: var(--light-text-color);}
 .botui-message-content.human {background-color: var(--accent2);color: var(--light-text-color);}
 .botui-message-content.loading {background-color: rgba(206, 206, 206, .5);}
 .botui-message-content-link {color: #919292;}
-.botui-actions-text-input {color: #595a5a;border-bottom: 1px solid #919292;}
 .botui-actions-text-submit {background: #777979;color: #fff;border: 1px solid #919292;}
 .botui-actions-buttons-button {background: #777979;color: #fff;box-shadow: 2px 3px 4px 0 rgba(0, 0, 0, .25);}
+.botui-actions-text-input {
+    color: var(--light-text-color);
+    border-bottom: 2px solid var(--light-text-color) !important;
+    float:right;
+    width: 400px;
+}
 
 /* Speech Kitt UI */
 #skitt-ui {background-color: var(--accent1);}

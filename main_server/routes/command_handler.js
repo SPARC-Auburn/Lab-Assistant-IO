@@ -21,7 +21,7 @@ function loadPackages() {
     // Add package only if it is enabled
     if (jsonContent.enabled == true){
       var package = require("../packages/" + folder);
-      // Add package to end(last) if considered to be a default package
+      // Add package to end(last) if considered to be a default package else to the beginning(first)
       if (jsonContent.default == true){
         packageList.push(package); 
       }
@@ -89,10 +89,6 @@ router.post('/', function (req, res, next) {
 //     })
 //   }
 // });
-
-
-
-
 
 router.post('/reload_packages', function (req, res, next) {
   loadPackages();
