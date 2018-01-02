@@ -1,8 +1,10 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.center-card{
+  width: 550px !important;
+  margin: 0 auto;
+  margin-top: 50px;
 }
-
-a {
-  color: #00B7FF;
+body{
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  user-select: none;
 }

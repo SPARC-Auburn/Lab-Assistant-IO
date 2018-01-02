@@ -1,9 +1,15 @@
 extends layout
 
 block content
-  .mdl-grid
-    .mdl-cell.mdl-cell--12-col(style="text-align: center")
-      h1 AssistIO
-      br
-      br
-      a(href="/packages") Packages
+  main.mdl-layout__content
+    .page-content
+      .mdl-grid
+        .mdl-cell.mdl-cell--12-col(style="text-align: center")
+          div(id="botui-app" class="botui-app-container") 
+            bot-ui
+
+
+        
+            
+  
+

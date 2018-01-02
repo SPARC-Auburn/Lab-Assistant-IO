@@ -1,0 +1,84 @@
+:root {
+    --main-light: #546e7a;
+    --main: #455a64;
+    --main-dark: #37474f;
+    --accent1-light: #26a69a;
+    --accent1: #009688;
+    --accent1-dark: #00897b;
+    --accent2-light: #1e88e5;
+    --accent2: #1976d2;
+    --accent2-dark: #1565c0;
+    --background-color: #37474f;
+    --light-text-color: #D8DADA;
+    --light-inactive-text-color: rgba(255,255,255,.4);
+    --dark-text-color: #000000;
+}
+
+h1{color: var(--light-text-color) !important;}
+h2{color: var(--light-text-color) !important;}
+h3{color: var(--light-text-color) !important;}
+h4{color: var(--light-text-color) !important;}
+h5{color: var(--light-text-color) !important;}
+h6{color: var(--light-text-color) !important;}
+p{color: var(--light-text-color) !important;}
+
+body{background-color: var(--background-color); color: var(--light-text-color) !important;}
+.mdl-layout__header {background-color: var(--main-light) !important; color: var(--light-text-color) !important;}
+.mdl-card {
+    background-color: var(--main) !important;
+    color: var(--light-text-color) !important;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px;    
+}
+.mdl-card__supporting-text {color: var(--light-text-color) !important;}
+.mdl-textfield {color: var(--light-text-color) !important;}
+.mdl-card__title {color: var(--light-text-color) !important;}
+.mdl-textfield__label {color: var(--light-inactive-text-color) !important;}
+.mdl-textfield__input {color: var(--light-text-color) !important;}
+.mdl-button--accent {background-color: var(--accent1) !important;color: var(--light-text-color) !important;}
+.mdl-layout__drawer{
+    background-color: var(--main) !important; 
+    color: var(--light-text-color) !important;
+    border-right: 1px solid var(--main) !important; 
+}
+.mdl-navigation__link{color: var(--light-text-color) !important;}
+.mdl-navigation__link:hover{background-color: var(--main-light) !important;}
+
+/* Tables */
+.mdl-data-table{background-color: var(--main-light) !important; color: var(--light-text-color) !important;}
+.mdl-data-table th{color: var(--light-text-color) !important;}
+.mdl-data-table tbody tr.is-selected {background-color: var(--main) !important;}
+.mdl-data-table tbody tr:hover {background-color: var(--main) !important;}
+
+/* Toggle Switches */
+.mdl-switch.is-checked .mdl-switch__track {background: var(--accent2-light) !important;}
+.mdl-switch.is-checked .mdl-switch__thumb {background: var(--accent2) !important;}
+
+/* Bot UI */
+#botui-app{background:none;}
+.botui-message{margin-bottom:20px !important;min-height:30px !important;}
+.botui-message-content {background-color: var(--accent1);color: var(--light-text-color);}
+.botui-message-content.human {background-color: var(--accent2);color: var(--light-text-color);}
+.botui-message-content.loading {background-color: rgba(206, 206, 206, .5);}
+.botui-message-content-link {color: #919292;}
+.botui-actions-text-submit {background: #777979;color: #fff;border: 1px solid #919292;}
+.botui-actions-buttons-button {background: #777979;color: #fff;box-shadow: 2px 3px 4px 0 rgba(0, 0, 0, .25);}
+.botui-actions-text-input {
+    color: var(--light-text-color);
+    border-bottom: 2px solid var(--light-text-color) !important;
+    float:right;
+    width: 400px;
+}
+
+/* Speech Kitt UI */
+#skitt-ui {background-color: var(--accent1);}
+.skitt-ui--not-listening #skitt-toggle-button {background-color: var(--main-light);}
+.skitt-ui--listening #skitt-toggle-button:hover {background-color: var(--main-light);}
+.skitt-ui--not-listening #skitt-toggle-button:hover {background-color: var(--accent1);}
+@-webkit-keyframes "listen_pulse" {
+    0% {background-color: var(--accent1-light)}
+    50% {background-color: var(--accent1)}
+    100% {background-color: var(--accent1-dark)}
+}
+.skitt-ui--listening #skitt-toggle-button {
+    -webkit-animation: listen_pulse 2s ease-out infinite
+}

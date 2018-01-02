@@ -1,0 +1,7 @@
+{
+  "name":"social",
+  "description": "A collection of administrative commands and fallback responses if previous suites did not catch.",
+  "enabled": true,
+  "default": false,
+  "dialogflowid": "d8cd9faa2fe14731b1187d05b7d6f409"
+}

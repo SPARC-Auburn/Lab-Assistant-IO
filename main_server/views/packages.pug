@@ -1,12 +1,17 @@
 extends layout
 
 block content
-    input(type:'text')#packageRepoInput
-    button#installPackage Install
-    br
-    br
-    table#packagesTable
-    br
-    br
-    a(href="/") Home
-    <script src="javascripts/packages.js"></script>
+    main.mdl-layout__content
+      .page-content
+        .mdl-card.center-card
+          .mdl-card__title Packages
+          .mdl-card__supporting-text
+            table#packageTable.mdl-data-table.mdl-js-data-table.mdl-data-table.mdl-shadow--2dp
+            br
+            p To install packages type the package name and press "Install."
+            .mdl-textfield.mdl-js-textfield
+              input#packageRepoInput.mdl-textfield__input(type='text')
+              label.mdl-textfield__label(for='packageRepoInput') Package Name
+            br
+            button#installPackage.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--accent Install
+            script(src='javascripts/packages.js')

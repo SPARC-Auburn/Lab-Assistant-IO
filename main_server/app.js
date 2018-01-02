@@ -5,13 +5,16 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-
+var command_handler = require('./routes/command_handler');
 var index = require('./routes/index');
 var settings = require('./routes/settings');
-var command_handler = require('./routes/command_handler');
 var packages = require('./routes/packages');
+var devices = require('./routes/devices');
+var documentation = require('./routes/documentation');
+
 
 var app = express();
+var opn = require('opn');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,10 +28,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
 app.use('/command_handler', command_handler);
+app.use('/', index);
 app.use('/settings', settings);
 app.use('/packages', packages);
+app.use('/devices', devices);
+app.use('/documentation', documentation);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -48,5 +53,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 console.log('Assistant started on port 8433 (https://localhost:8443/).');
+opn('https://localhost:8443/', {app: 'chrome'});
 
 module.exports = app;

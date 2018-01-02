@@ -1,0 +1,7 @@
+{
+  "name":"home",
+  "description": "A collection of administrative commands and fallback responses if previous suites did not catch.",
+  "enabled": true,
+  "default": false,
+  "dialogflowid": "665a8602efe74041ac56958d1ee6a59d"
+}

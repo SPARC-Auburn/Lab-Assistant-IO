@@ -8,7 +8,7 @@ The purpose of this project is to create a virtual assistant to assist SPARC mem
 
 ## Project Overview
 
-This project is programmed in Node.JS.  Node.JS provides a powerful yet fast back end to run the assistant. This project was originally developed in Python and is being transitioned into Node.JS to decrease response time and utilize the networking advantages of Node.JS.  To see the original project visit [SPARC-Auburn/Lab-Assistant](https://github.com/SPARC-Auburn/Lab-Assistant).
+This project is programmed in [Node.JS](https://nodejs.org/en/).  Node.JS provides a powerful yet fast back end to run the assistant. This project was originally developed in Python and is being transitioned into Node.JS to decrease response time and utilize the networking advantages of Node.JS.  To see the original project visit [SPARC-Auburn/Lab-Assistant](https://github.com/SPARC-Auburn/Lab-Assistant).  Express.JS is utilized to provide a robust framework for the software.  Pug is used instead of HTML to provide a simpler way to generate the browser based interface.
 
 ### Packages
 
@@ -39,6 +39,12 @@ To interact with various devices across a network, client servers can be setup.
 * Home Server - Interacts with various IOT devices and microcontrollers for the purposes of home automation.
 * Lab Server - Interacts with various IOT devices and microcontrollers for the purposes of lab automation.
 * Slack Server - Interacts with Slack message groups.
+
+### Notable Libraries and Modules
+
+* [Bot UI](https://botui.org/) - User interface for chatting with the assistant
+* [Materiald Design Lite](https://getmdl.io/) - Material Styling Guide
+* [Annyang](https://www.talater.com/annyang/) - Speech Recognition
 
 ## Running the Assistant
 

@@ -1,81 +1,79 @@
+// @ts-check
+// Set up Express.JS and pull in other modules
 const express = require('express');
 const bodyParser = require('body-parser');
-const apiai = require('apiai');
 const router = express.Router();
 const uuidv1 = require('uuid/v1');
 const fs = require('fs');
 const path = require('path');
+const apiai = require('apiai');
+
+var packageList = [];
+var responseArray = [];
 
 router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({
-  extended: false
-}));
+router.use(bodyParser.urlencoded({extended: false}));
 
-var sessionID = uuidv1();
-var apiaiMainIntent = apiai("112abae1919f4232b22ce834d6e99713");
-var applicationList = [];
-
-/**
- * Loads packages from the packages folder
- */
 function loadPackages() {
-
-  applicationList = [];
+  // Load the packages from the packages folder and add them to packageList
   var normalizedPath = path.join('./', "packages");
-
   fs.readdirSync(normalizedPath).forEach(function (folder) {
-    var aio_info = fs.readFileSync("./packages/" + folder + "/aio_info.json");
-    var jsonContent = JSON.parse(aio_info);
-    var names = jsonContent.names;
-    names.forEach(function (name) {
-      applicationList.push({
-        [name]: jsonContent.queryHandler
-      });
-    })
-    global[jsonContent.queryHandler] = require("../packages/" + folder);
+    var jsonContent = JSON.parse(fs.readFileSync("./packages/" + folder + "/aio_info.json").toString());
+    // Add package only if it is enabled
+    if (jsonContent.enabled == true){
+      var package = require("../packages/" + folder);
+      // Add package to end(last) if considered to be a default package else to the beginning(first)
+      if (jsonContent.default == true){
+        packageList.push(package); 
+      }
+      else{
+        packageList.unshift(package);
+      }      
+    }    
   })
 }
 
+function printPackageNames(){
+  var output = "packages installed = [";
+  var i = 0;
+  for (i = 0; i < packageList.length; i++) {
+    output += " " + packageList[i].getName() + " ";
+  }
+  output += "]";
+  console.log(output);
+}
+
 router.post('/', function (req, res, next) {
-  var request = apiaiMainIntent.textRequest(req.body.question, {
-    sessionId: sessionID
-  });
-
-  request.on('response', function (response) {
-    if (response.result.source == 'domains') {
-      res.send({
-        'ttsText': response.result.fulfillment.speech
-      })
-    } else {
-      var applicationFound = false;
-      var applicationName = response.result.parameters.application;
-      applicationList.forEach(function (applicationData) {
-        if (applicationName in applicationData) {
-          applicationFound = true;
-          console.log(global[applicationData[applicationName]](response.result.parameters.query));
+  var response = "";
+  console.log("<",req.body.question);
+  // This function repeatedly calls itself until the packages are all read.
+  var readPackages = function (i) {
+    if (i == packageList.length) {
+      // we are done.
+      console.log("Completed reading all packages.");
+    } 
+    else {
+      packageList[i].getResponse(req.body.question, function(response){
+        if (response != undefined && response != ""){
+          console.log(packageList[i].getName() + "> " + response);
+          res.send({'ttsText': response});
         }
-      })
-      if (!applicationFound) {
-        res.send({
-          'ttsText': 'Could not find an application with name ' + response.result.parameters.application
-        })
-      }
-
+        else{
+          readPackages(i+1);
+        }  
+      });
     }
-  });
-
-  request.on('error', function (error) {
-    console.log(error);
-  });
-
-  request.end();
-
-})
+  };
+  readPackages(0);
+});
 
 router.post('/reload_packages', function (req, res, next) {
   loadPackages();
-})
+  printPackageNames();
+  
+});
 
 loadPackages();
+printPackageNames();
 
 module.exports = router;
