@@ -1,0 +1,7 @@
+{
+  "name":"small-talk",
+  "description": "Fallback suite for when the bot doesn't know what to say",
+  "enabled": true,
+  "default": false,
+  "dialogflowid": "a583372870a84d00a62475e8613275ca"
+}

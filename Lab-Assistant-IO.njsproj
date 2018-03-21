@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <SchemaVersion>2.0</SchemaVersion>
+        <ProjectGuid>{147439e5-6021-4a97-b946-c5dd12392241}</ProjectGuid>
+        <ProjectHome />
+        <ProjectView>ShowAllFiles</ProjectView>
+        <StartupFile />
+        <WorkingDirectory>.</WorkingDirectory>
+        <OutputPath>.</OutputPath>
+        <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+        <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+        <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+    <ItemGroup>
+        <Content Include="CONTRIBUTING.md" />
+        <Content Include="NOTICE.md" />
+        <Content Include="README.md" />
+        <Content Include="documentation\debian_logo.png" />
+        <Content Include="documentation\dialogflow_logo.png" />
+        <Content Include="documentation\Overall-Assistant-Diagram.png" />
+        <Content Include="documentation\pycharm_logo.png" />
+        <Content Include="documentation\sparc_logo.png" />
+        <Content Include="documentation\KAREN RoadMap.md" />
+        <Content Include="main_server\package-lock.json" />
+        <Content Include="main_server\package.json" />
+        <Compile Include="main_server\app.js" />
+        <Content Include="main_server\public\manifest.json" />
+        <Compile Include="main_server\routes\command_handler.js" />
+        <Compile Include="main_server\routes\devices.js" />
+        <Compile Include="main_server\routes\documentation.js" />
+        <Compile Include="main_server\routes\index.js" />
+        <Compile Include="main_server\routes\packages.js" />
+        <Compile Include="main_server\routes\settings.js" />
+        <Compile Include="main_server\routes\users.js" />
+        <Compile Include="main_server\tests\dialogflow_test.js" />
+        <Content Include="main_server\views\devices.pug" />
+        <Content Include="main_server\views\documentation.pug" />
+        <Content Include="main_server\views\error.pug" />
+        <Content Include="main_server\views\index.pug" />
+        <Content Include="main_server\views\layout.pug" />
+        <Content Include="main_server\views\packages.pug" />
+        <Content Include="main_server\views\settings.pug" />
+        <Content Include="main_server\packages\default\aio_info.json" />
+        <Content Include="main_server\packages\default\README.md" />
+        <Compile Include="main_server\packages\default\index.js" />
+        <Content Include="main_server\packages\home\aio_info.json" />
+        <Content Include="main_server\packages\home\README.md" />
+        <Compile Include="main_server\packages\home\index.js" />
+        <Content Include="main_server\packages\lab\aio_info.json" />
+        <Content Include="main_server\packages\lab\README.md" />
+        <Compile Include="main_server\packages\lab\index.js" />
+        <Content Include="main_server\packages\social\aio_info.json" />
+        <Content Include="main_server\packages\social\README.md" />
+        <Compile Include="main_server\packages\social\index.js" />
+        <Content Include="main_server\public\images\icon.png" />
+        <Content Include="main_server\public\images\icon2.png" />
+        <Content Include="main_server\public\images\karen_icon.png" />
+        <Content Include="main_server\public\images\source.gif" />
+        <Content Include="main_server\public\images\icon.svg" />
+        <Compile Include="main_server\public\javascripts\index.js" />
+        <Compile Include="main_server\public\javascripts\packages.js" />
+        <Content Include="main_server\public\stylesheets\botui.min.css" />
+        <Content Include="main_server\public\stylesheets\dark-theme.css" />
+        <Content Include="main_server\public\stylesheets\light-theme.css" />
+        <Content Include="main_server\public\stylesheets\material-lite(reference).css" />
+        <Content Include="main_server\public\stylesheets\speechkitt.css" />
+        <Content Include="main_server\public\stylesheets\style.css" />
+        <Content Include="main_server\public\images\ic_mic_black_24dp\web\ic_mic_black_24dp_1x.png" />
+        <Content Include="main_server\public\images\ic_mic_black_24dp\web\ic_mic_black_24dp_2x.png" />
+        <Content Include="main_server\public\images\ic_mic_black_24dp\android\drawable-hdpi\ic_mic_black_24dp.png" />
+        <Content Include="main_server\public\images\ic_mic_black_24dp\android\drawable-mdpi\ic_mic_black_24dp.png" />
+        <Content Include="main_server\public\images\ic_mic_black_24dp\android\drawable-xhdpi\ic_mic_black_24dp.png" />
+        <Content Include="main_server\public\images\ic_mic_black_24dp\android\drawable-xxhdpi\ic_mic_black_24dp.png" />
+        <Content Include="main_server\public\images\ic_mic_black_24dp\android\drawable-xxxhdpi\ic_mic_black_24dp.png" />
+        <Content Include="main_server\public\images\ic_mic_black_24dp\ios\ic_mic.imageset\ic_mic.png" />
+        <Content Include="main_server\public\images\ic_mic_black_24dp\ios\ic_mic.imageset\ic_mic_2x.png" />
+        <Content Include="main_server\public\images\ic_mic_black_24dp\ios\ic_mic.imageset\ic_mic_3x.png" />
+        <Content Include="main_server\public\images\ic_mic_black_24dp\ios\ic_mic.imageset\Contents.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="documentation" />
+        <Folder Include="Lab-Assistant-IO" />
+        <Folder Include="Lab-Assistant-IO\Lab-Assistant-IO" />
+        <Folder Include="main_server" />
+        <Folder Include="main_server\bin" />
+        <Folder Include="main_server\packages" />
+        <Folder Include="main_server\packages\default" />
+        <Folder Include="main_server\packages\home" />
+        <Folder Include="main_server\packages\lab" />
+        <Folder Include="main_server\packages\social" />
+        <Folder Include="main_server\public" />
+        <Folder Include="main_server\public\images" />
+        <Folder Include="main_server\public\images\ic_mic_black_24dp" />
+        <Folder Include="main_server\public\images\ic_mic_black_24dp\android" />
+        <Folder Include="main_server\public\images\ic_mic_black_24dp\android\drawable-hdpi" />
+        <Folder Include="main_server\public\images\ic_mic_black_24dp\android\drawable-mdpi" />
+        <Folder Include="main_server\public\images\ic_mic_black_24dp\android\drawable-xhdpi" />
+        <Folder Include="main_server\public\images\ic_mic_black_24dp\android\drawable-xxhdpi" />
+        <Folder Include="main_server\public\images\ic_mic_black_24dp\android\drawable-xxxhdpi" />
+        <Folder Include="main_server\public\images\ic_mic_black_24dp\ios" />
+        <Folder Include="main_server\public\images\ic_mic_black_24dp\ios\ic_mic.imageset" />
+        <Folder Include="main_server\public\images\ic_mic_black_24dp\web" />
+        <Folder Include="main_server\public\javascripts" />
+        <Folder Include="main_server\public\stylesheets" />
+        <Folder Include="main_server\routes" />
+        <Folder Include="main_server\tests" />
+        <Folder Include="main_server\views" />
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+    <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->
+    <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+    <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+    <ProjectExtensions>
+        <VisualStudio>
+          <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+            <WebProjectProperties>
+              <UseIIS>False</UseIIS>
+              <AutoAssignPort>True</AutoAssignPort>
+              <DevelopmentServerPort>0</DevelopmentServerPort>
+              <DevelopmentServerVPath>/</DevelopmentServerVPath>
+              <IISUrl>http://localhost:48022/</IISUrl>
+              <NTLMAuthentication>False</NTLMAuthentication>
+              <UseCustomServer>True</UseCustomServer>
+              <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+              <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+            </WebProjectProperties>
+          </FlavorProperties>
+          <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+            <WebProjectProperties>
+              <StartPageUrl>
+              </StartPageUrl>
+              <StartAction>CurrentPage</StartAction>
+              <AspNetDebugging>True</AspNetDebugging>
+              <SilverlightDebugging>False</SilverlightDebugging>
+              <NativeDebugging>False</NativeDebugging>
+              <SQLDebugging>False</SQLDebugging>
+              <ExternalProgram>
+              </ExternalProgram>
+              <StartExternalURL>
+              </StartExternalURL>
+              <StartCmdLineArguments>
+              </StartCmdLineArguments>
+              <StartWorkingDirectory>
+              </StartWorkingDirectory>
+              <EnableENC>False</EnableENC>
+              <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+            </WebProjectProperties>
+          </FlavorProperties>
+        </VisualStudio>
+    </ProjectExtensions>
+</Project>
